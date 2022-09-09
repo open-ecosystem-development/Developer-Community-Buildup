@@ -12,7 +12,7 @@ This article provides diagnosis and solutions for common user experience issues 
 | 2   | [Non-Huawei account sign-in failed](https://github.com/hms-ecosystem/Developer-Community-Buildup/blob/main/Non-GMS-Phone-UE-Issues-Solutions/02-non-huawei-account-signin-failed.md) |
 | 3   | [Google IAP does not work](https://github.com/hms-ecosystem/Developer-Community-Buildup/blob/main/Non-GMS-Phone-UE-Issues-Solutions/03-gms-iap-does-not-work.md) |
 | 4   | [FCM & GMS push notifications not working](https://github.com/hms-ecosystem/Developer-Community-Buildup/blob/main/Non-GMS-Phone-UE-Issues-Solutions/04-fcm-gms-push-notifications-not-working.md) |
-| 5   | [Missing GPS pop-up](https://github.com/hms-ecosystem/Developer-Community-Buildup/blob/main/Non-GMS-Phone-UE-Issues-Solutions/05-missing-GPS-pop-up.md) |
+| 5   | [Missing GPS pop-up](https://github.com/hms-ecosystem/Developer-Community-Buildup/blob/main/Non-GMS-Phone-UE-Issues-Solutions/05-missing-gps-pop-up.md) |
 | 6   | [GMS location services are not working](https://github.com/hms-ecosystem/Developer-Community-Buildup/blob/main/Non-GMS-Phone-UE-Issues-Solutions/06-gms-location-services-are-not-working.md) |
 | 7   | [GMS Map does not work](https://github.com/hms-ecosystem/Developer-Community-Buildup/blob/main/Non-GMS-Phone-UE-Issues-Solutions/07-gms-map-does-not-work.md) |
 | 8   | [GMS ML Scan does not work](https://github.com/hms-ecosystem/Developer-Community-Buildup/blob/main/Non-GMS-Phone-UE-Issues-Solutions/08-gms-ml-scan-does-not-work.md) |
