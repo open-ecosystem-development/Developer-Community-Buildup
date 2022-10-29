@@ -1,0 +1,808 @@
+﻿1
+00:00:08,041 --> 00:00:09,042
+Hello, everyone.
+
+2
+00:00:09,042 --> 00:00:11,544
+My name is Wei Chung from Futurewei Technologies.
+
+3
+00:00:12,145 --> 00:00:15,415
+Today we're going to go over what
+the Wonderland Engine is,
+
+4
+00:00:15,648 --> 00:00:20,286
+it's main features and how to build your own VR experience
+using the Wonderland Engine.
+
+5
+00:00:21,087 --> 00:00:24,391
+From this video, you will learn
+how to set up your development environment
+
+6
+00:00:24,724 --> 00:00:27,127
+the different parts of the Wonderland
+Editor UI.
+
+7
+00:00:27,761 --> 00:00:31,531
+Getting started with a new VR project
+and adding in objects.
+
+8
+00:00:31,898 --> 00:00:34,300
+Applying JavaScript components to your objects.
+
+9
+00:00:34,734 --> 00:00:39,172
+How to change the camera. view, the scene lighting and enabling cast of shadows.
+
+10
+00:00:39,773 --> 00:00:45,478
+Then we'll get into the design goals
+of our specific demos and its JavaScript game components.
+
+11
+00:00:46,279 --> 00:00:51,184
+We also include how to debug a game
+from the Huawei VR Glass, and lastly,
+
+12
+00:00:51,351 --> 00:00:55,255
+rendering support
+for simplified Chinese characters.
+
+13
+00:00:56,823 --> 00:01:05,065
+The Wonderland Engine is a development platform for web-based graphic applications, specifically for VR and AR.
+
+14
+00:01:05,732 --> 00:01:14,908
+It comes with an accessible 3D editor application, the Wonderland Editor and efficient Webassembly runtime that runs in the browser.
+
+15
+00:01:16,109 --> 00:01:25,919
+The Wonderland engine enables you to easily build
+highly performant VR and AR applications for the web.
+
+16
+00:01:25,919 --> 00:01:32,892
+Before we can begin creating a new Wonderland project, please use the QR code or URL to create an account.
+
+17
+00:01:33,326 --> 00:01:35,395
+Download and install Wonderland Engine
+
+18
+00:01:37,197 --> 00:01:41,101
+The Wonderland Editor is only for making
+changes to the 3D environment.
+
+19
+00:01:41,701 --> 00:01:45,004
+A separate code editor is needed to edit
+the JavaScript files
+
+20
+00:01:45,371 --> 00:01:48,241
+and we recommend
+using Visual Studio Code for this.
+
+21
+00:01:48,808 --> 00:01:54,848
+You can follow the QR code or URL to download it.
+
+22
+00:01:54,848 --> 00:01:58,585
+In addition to a code editor,
+you're going to need a full
+
+23
+00:01:58,585 --> 00:02:02,922
+VR browser app to run the game on
+your Huawei phone.
+
+24
+00:02:02,956 --> 00:02:08,461
+The Wolvic VR browser is the only VR capable
+browser created for the Huawei VR Glass.
+
+25
+00:02:09,129 --> 00:02:15,101
+Please download Wolvic VR Browser 6DoF version
+from wolvic.com/dl
+
+26
+00:02:16,536 --> 00:02:23,443
+Before moving on to the next step, let me introduce you to Bryant and he will explain the code development.
+
+27
+00:02:23,676 --> 00:02:27,313
+Hello, everyone. I'm Bryant from Futurewei Technologies.
+
+28
+00:02:27,313 --> 00:02:29,883
+Here's what the layout for the Wonderland
+Editor looks like,
+
+29
+00:02:29,983 --> 00:02:32,418
+which is similar to a streamlined 3D
+model editor.
+
+30
+00:02:32,986 --> 00:02:35,455
+The scene view displays
+a preview of the 3D environment.
+
+31
+00:02:36,022 --> 00:02:38,791
+All objects can be viewed
+and managed from the Scene Outline.
+
+32
+00:02:39,526 --> 00:02:41,928
+That Asset Browser allows for drag-and-drop.
+
+33
+00:02:42,061 --> 00:02:44,130
+Importation of assets into the project.
+
+34
+00:02:44,731 --> 00:02:47,767
+Individual object properties
+can be changed from the Properties view.
+
+35
+00:02:48,568 --> 00:02:57,143
+The Console can be viewed from the bottom right for debugging. You can package and start
+your game server or from the top center of the window.
+
+36
+00:02:58,411 --> 00:03:03,283
+Now that we've got all the tools installed and our environment setup, let's create
+a new Wonderland project.
+
+37
+00:03:03,983 --> 00:03:11,524
+From the Welcome Screen, Select New > VR template and Create to open up a new project.
+
+38
+00:03:12,292 --> 00:03:15,195
+We start the project off
+by importing all the 3D models needed.
+
+39
+00:03:15,728 --> 00:03:20,466
+This can be done by first dragging and dropping the files directly into the model folder of the Asset Browser,
+
+40
+00:03:20,900 --> 00:03:24,003
+and then dropping them
+into the scene view.
+
+41
+00:03:24,237 --> 00:03:30,109
+If you need to remove an object from the scene, right-click it from the Scene Outline and select the Delete option.
+
+42
+00:03:30,743 --> 00:03:34,347
+It will still be available in the Asset Browser.
+
+43
+00:03:35,148 --> 00:03:38,251
+Object transformation can be done
+from either the Scene or Properties views.
+
+44
+00:03:38,251 --> 00:03:43,022
+Modifications made from the scene view are best for coarse changes
+
+45
+00:03:43,022 --> 00:03:45,959
+while the Properties view
+allows for greater precision changes.
+
+46
+00:03:46,593 --> 00:03:50,163
+Additionally, the Properties view
+can be used to change JS component values.
+
+47
+00:03:51,931 --> 00:03:56,102
+The Properties view not only allows for changing the values
+for JS components,
+
+48
+00:03:56,502 --> 00:04:01,841
+but components can also be added
+to objects from this view as well.
+
+49
+00:04:01,841 --> 00:04:07,013
+To remove JS components from an object,
+click the three-dot icon and select the delete option.
+
+50
+00:04:08,781 --> 00:04:14,020
+To change the camera view of a scene, we can zoom using the scroll wheel pan by
+
+51
+00:04:14,020 --> 00:04:19,192
+right-clicking and dragging, or rotate by holding the middle mouse button and dragging.
+
+52
+00:04:21,561 --> 00:04:30,169
+To add a new light object, navigate to Scene Outline, right-click Root > Add Object and then Light. With a light object,
+
+53
+00:04:30,303 --> 00:04:36,242
+we can change its transformation, 
+light intensity, color and light type in properties view.
+
+54
+00:04:36,809 --> 00:04:42,515
+There are three different light types
+available Point, Spot and Sun.
+
+55
+00:04:42,515 --> 00:04:46,819
+Each option has different advantages and disadvantages
+depending on desired use case.
+
+56
+00:04:47,387 --> 00:04:53,693
+If you want to illuminate the entire scene, it's best for performance to use a single sunlight
+instead of multiple point lights.
+
+57
+00:04:55,528 --> 00:05:00,333
+Some objects in the scene might not cast shadows
+as expected. To fix this problem,
+
+58
+00:05:00,500 --> 00:05:04,771
+navigate to the properties view and check for the material name that your object is using.
+
+59
+00:05:05,538 --> 00:05:09,509
+Then navigate to Views > Resources
+on the top-left of the window.
+
+60
+00:05:11,411 --> 00:05:16,683
+Since we know the material name, check which pipeline
+correlates to the material of your 3D object.
+
+61
+00:05:16,683 --> 00:05:21,421
+Finally, go to the Pipeline tab, select your pipeline, 
+enable Cache Shadows
+
+62
+00:05:21,921 --> 00:05:24,657
+and disable both ALPHA and
+ALPHA_MASKED settings.
+
+63
+00:05:25,191 --> 00:05:29,228
+This should enable cast of shadows
+for your object.
+
+64
+00:05:29,629 --> 00:05:32,932
+Now that we have all the basics
+of the Wonderland Editor down,
+
+65
+00:05:33,633 --> 00:05:37,236
+we're going to move into the details
+of our game demo. The design goal
+
+66
+00:05:37,270 --> 00:05:41,641
+of our game is to create an engaging and
+dynamic experience as a showcase for VR.
+
+67
+00:05:42,241 --> 00:05:45,278
+We decided to make a shooter
+game as it best fit for these requirements.
+
+68
+00:05:46,245 --> 00:05:49,182
+The game takes place on a farm,
+has become overrun with mice,
+
+69
+00:05:49,816 --> 00:05:52,585
+rejected the game to do some pest control
+and save the farm.
+
+70
+00:05:53,386 --> 00:05:57,123
+The players task moving around the farm
+and shooting all the mice to win the game.
+
+71
+00:05:58,424 --> 00:06:00,927
+Aside from all the 3D assets that need to be imported,
+
+72
+00:06:01,361 --> 00:06:05,031
+we also have to add in Javascript
+to define how all the objects interact
+
+73
+00:06:05,031 --> 00:06:07,834
+with each other and build a game logic.
+
+74
+00:06:09,502 --> 00:06:12,905
+Let's dive into the various
+JavaScript components that our game uses.
+
+75
+00:06:13,439 --> 00:06:16,409
+We have an invisible target spawner object
+that moves around
+
+76
+00:06:16,476 --> 00:06:18,945
+randomly and spawns the mice at 
+set intervals.
+
+77
+00:06:19,645 --> 00:06:22,348
+The mice are randomly spawned
+nearest to the last mouse spawn
+
+78
+00:06:22,348 --> 00:06:25,618
+based on the movement behavior
+of the target spawner object.
+
+79
+00:06:26,219 --> 00:06:29,756
+The players able to shoot projectiles
+because of the bullet spawner component,
+
+80
+00:06:30,156 --> 00:06:33,393
+which spawns bullet objects and attaches
+bullet physics to each one.
+
+81
+00:06:33,960 --> 00:06:39,365
+The bullet physics component
+controls the trajectory of the bullet and the bullet life cycle.
+
+82
+00:06:39,365 --> 00:06:42,034
+Both the mice
+and the bullets have collision components
+
+83
+00:06:42,034 --> 00:06:44,370
+configured to detect
+when they were hit by each other.
+
+84
+00:06:45,204 --> 00:06:47,507
+Each bullet
+also has a score trigger component
+
+85
+00:06:47,907 --> 00:06:51,210
+which listens for a collision event
+with the mouse and triggers a score event.
+
+86
+00:06:52,078 --> 00:06:55,581
+Additionally, we use audio to
+play sound effects and music
+
+87
+00:06:58,284 --> 00:07:00,353
+To apply JavaScript to our Wonderland project,
+
+88
+00:07:00,820 --> 00:07:06,025
+we need to use a separate code editor like Visual Studio Code to make the actual code changes.
+
+89
+00:07:06,592 --> 00:07:10,563
+The JavaScript defines the behavior
+of individual objects such as movement,
+
+90
+00:07:10,830 --> 00:07:16,235
+objects spawning, adding or removing
+components, collision effects, etc..
+
+91
+00:07:16,936 --> 00:07:22,842
+Here we have the mouse spawner object instead of having all the mice spawn in at the same time.
+
+92
+00:07:23,242 --> 00:07:26,012
+We wanted the spawn locations
+to be a little bit more random
+
+93
+00:07:26,045 --> 00:07:29,549
+and more fun to the player
+because this is just the mouse spawner
+
+94
+00:07:29,549 --> 00:07:32,819
+and not the actual mouse targets
+that the player shoots.
+
+95
+00:07:33,186 --> 00:07:35,755
+We don't want the player
+to see where this object is.
+
+96
+00:07:36,155 --> 00:07:38,491
+As you can see from both the Scene
+and Properties view,
+
+97
+00:07:38,891 --> 00:07:44,197
+the mouse spawner is rendered invisible
+because a mesh component is set inactive
+
+98
+00:07:45,031 --> 00:07:48,334
+other than an inactive mesh that affects
+how the object looks in the game.
+
+99
+00:07:48,968 --> 00:07:52,171
+There are two other components
+that determine the behavior.
+
+100
+00:07:52,905 --> 00:07:55,741
+These components control
+how the mice is spawned
+
+101
+00:07:55,741 --> 00:07:58,644
+and how the spawner itself moves
+around the map.
+
+102
+00:07:58,644 --> 00:08:02,248
+Mouse spawner and spawn mover.
+
+103
+00:08:03,182 --> 00:08:07,286
+Now, we'll take a look at the JavaScript files
+for the mouse spawner object.
+
+104
+00:08:07,854 --> 00:08:10,523
+Here we have the actual code for the mouse
+spawner component.
+
+105
+00:08:11,457 --> 00:08:17,263
+At the top of the file. We define the global variables that can be accessed by all the other JS files.
+
+106
+00:08:17,797 --> 00:08:22,235
+This can be quite useful, but not recommended for all variables you might use in your project.
+
+107
+00:08:23,469 --> 00:08:29,308
+Right after the component name declaration, we can define variables here with values that can be changed from the Properties
+
+108
+00:08:29,308 --> 00:08:37,083
+view in the Wonderland Editor. This type of variable declaration is most useful for mesh, material and animation types,
+
+109
+00:08:38,451 --> 00:08:41,120
+init() is the first function
+called in the component lifecycle.
+
+110
+00:08:41,521 --> 00:08:45,024
+We initialize the rest of the variables here and also initialize the mouse sound effect.
+
+111
+00:08:46,092 --> 00:08:49,495
+The start function is always called after the init() function
+has completed.
+
+112
+00:08:50,096 --> 00:08:52,598
+Whether or not you decide to use the start
+function is up to you.
+
+113
+00:08:53,499 --> 00:09:00,239
+Here we make the first call to the spawn
+target function which spanws the first mouse
+at the beginning of the game.
+
+114
+00:09:01,040 --> 00:09:03,543
+The update function is called
+for every frame update.
+
+115
+00:09:04,010 --> 00:09:09,248
+For example, 60 frames per second means that the update function is called 60 times per second.
+
+116
+00:09:09,882 --> 00:09:13,019
+In general, it makes sense
+to update the position of moving objects.
+
+117
+00:09:13,085 --> 00:09:18,424
+Listen for collision events, time sensitive events, and anything that relies on time here
+
+118
+00:09:19,025 --> 00:09:22,828
+For the mouse spawner, we check the time
+elapsed and spawn the mice at set intervals
+
+119
+00:09:22,828 --> 00:09:29,635
+until the maximum number of mice is reached.
+In the spawn target function,
+
+120
+00:09:29,635 --> 00:09:35,341
+we create a new object, set its position relative to the current spawner location and set its size.
+
+121
+00:09:36,142 --> 00:09:42,515
+Then we add the mesh, spawn mover, collision and score trigger components. For a final touch,
+
+122
+00:09:42,582 --> 00:09:48,421
+We play the mouse sound effect as a cue to the player
+that the new mouse has spawned in.
+
+123
+00:09:49,589 --> 00:09:52,825
+The blue spawner component is attached
+to the controller and listens
+
+124
+00:09:52,825 --> 00:09:56,629
+for input from the trigger and access
+the fire control for new bullet objects.
+
+125
+00:09:57,129 --> 00:10:01,000
+Moving forward, we're just going to focus on
+the more significant portion of the code.
+
+126
+00:10:02,068 --> 00:10:05,104
+onTouchDown is called
+when the controller trigger is depressed
+
+127
+00:10:05,972 --> 00:10:13,746
+the onActivate and xrSessionStart functions are used to bind
+the select start events to onTouchDown
+
+128
+00:10:13,746 --> 00:10:17,917
+before everything else loads.
+To control the player's rate of fire,
+
+129
+00:10:18,384 --> 00:10:21,487
+we do a check for the first time
+since the last shot occurred.
+
+130
+00:10:22,221 --> 00:10:25,224
+If enough time has passed,
+we get the forward vector
+
+131
+00:10:25,324 --> 00:10:28,394
+of the controller's cursor
+to determine the direction that the bullet
+
+132
+00:10:28,394 --> 00:10:31,230
+should travel in
+and pass it into the launch function.
+
+133
+00:10:32,064 --> 00:10:40,039
+To provide better haptic feedback to the player, pulse is call to vibrate the controller on every shot.
+
+134
+00:10:40,473 --> 00:10:43,776
+Launch (throw) does a few checks before calling spawnBullet.
+
+135
+00:10:43,776 --> 00:10:50,783
+spawnBullet adds a new object for the bullet, sizes it to the correct scale, adds a mesh, collision
+
+136
+00:10:51,117 --> 00:10:55,054
+and bullet physics components.
+
+137
+00:10:55,054 --> 00:10:58,658
+Control of the bullet trajectory is done
+in just a few lines in bullet physics.
+
+138
+00:10:59,225 --> 00:11:04,664
+Most of the work in physics is done
+in the update function, since we expect the ball
+to be in constant motion.
+
+139
+00:11:05,564 --> 00:11:10,102
+If the bullet hits the floor,
+we deactivate the object to preserve performance.
+
+140
+00:11:10,269 --> 00:11:15,641
+If the bullet travels
+too far from the player beyond the load
+distance we also deactivate it.
+
+141
+00:11:16,676 --> 00:11:23,549
+Otherwise, the bullet continues to travel in a straight path from where it was shot at a constant speed.
+
+142
+00:11:26,018 --> 00:11:31,023
+Each bullet has a score trigger component attached to it, which detects if it has collided with the mouse
+
+143
+00:11:31,157 --> 00:11:33,959
+while the bullet is still active.
+Inside of init,
+
+144
+00:11:34,427 --> 00:11:37,129
+We load the audio sound effects
+and play them later.
+
+145
+00:11:37,830 --> 00:11:41,701
+We want the score trigger to check for collisions
+whenever the bullet updates its position.
+
+146
+00:11:42,334 --> 00:11:46,472
+Therefore, we also do the checks for
+score trigger inside of update.
+
+147
+00:11:47,606 --> 00:11:51,577
+If a collision is detected, we trigger
+the confetti particles, destroy the mouse
+
+148
+00:11:51,577 --> 00:11:55,848
+object, update the score message
+and play a hit sound effect.
+
+149
+00:11:56,549 --> 00:12:00,586
+If all the mice have been eliminated,
+the score message changes to show a win,
+
+150
+00:12:00,619 --> 00:12:05,791
+the background music and mouse
+sound effect stop and the win music plays
+
+151
+00:12:08,194 --> 00:12:10,563
+All the background sound effects and music
+
+152
+00:12:10,563 --> 00:12:13,899
+are implemented in bgMusic,
+which is attached to the player object.
+
+153
+00:12:14,400 --> 00:12:18,838
+This means that the audio volume from these sources stays constant no matter where the player moves.
+
+154
+00:12:19,472 --> 00:12:25,277
+As you can see, initializing and playing sounds is quite simple and takes only two lines of code per audio source.
+
+155
+00:12:26,112 --> 00:12:33,619
+If others JS components need access to this audio, it just needs to be declared as a global variable, instead of a local one.
+
+156
+00:12:34,353 --> 00:12:36,655
+With that,
+we've covered the code development.
+
+157
+00:12:39,258 --> 00:12:45,431
+Thanks, Bryant. Before we wrap up this video, let's look at some extra features and debug set up
+
+158
+00:12:46,165 --> 00:12:49,802
+The Wonderland Engine supports rendering
+of Simplified Chinese characters.
+
+159
+00:12:50,302 --> 00:12:57,476
+You can incorporate Simplified Chinese fonts into your project by following the tutorial found on the Wonderland Engine website.
+
+160
+00:12:58,444 --> 00:13:02,648
+When using the Huawei VR class,
+it is not possible to connect the phone
+
+161
+00:13:02,882 --> 00:13:08,587
+via USB and debug the Wonderland game while it is running on the device.
+
+162
+00:13:08,587 --> 00:13:15,361
+This is because there is no available
+USB port on the phone as it is taken up by the VR glass.
+
+163
+00:13:15,394 --> 00:13:20,432
+Instead, we have to use ADB over Wi-Fi
+to connect to the Huawei phone
+
+164
+00:13:21,300 --> 00:13:26,005
+This can be done by enabling ADB
+over a Wi-Fi on the Huawei phone,
+
+165
+00:13:26,605 --> 00:13:34,580
+configuring the SSL server on the Wonderland Editor and using localhost:8081 instead of localhost:8080
+
+166
+00:13:35,214 --> 00:13:38,250
+to connect to the Wonderland local server.
+
+167
+00:13:39,151 --> 00:13:44,223
+You can follow the guide
+to set up your development environment.
+
+168
+00:13:45,591 --> 00:13:48,894
+That conclude our presentation
+on the Wonderland Engine demo.
+
+169
+00:13:49,495 --> 00:13:52,965
+Here are the links for the free
+and complete game source code.
+
+170
+00:13:53,432 --> 00:13:59,038
+The Wonderland Engine itself, the Wolvic
+VR Browser and check out our website
+
+171
+00:13:59,071 --> 00:14:01,173
+running a live instance of the game.
+
+172
+00:14:02,141 --> 00:14:03,642
+Thank you.
