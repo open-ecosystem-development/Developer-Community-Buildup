@@ -1,0 +1,24 @@
+The below codes are from the below URL (line 72- 84). 
+https://github.com/signalapp/Signal-Android/blob/f9a4b7cf12cb97b80f80fa20ab7bb451c784e4aa/app/src/main/java/org/thoughtcrime/securesms/messages/IncomingMessageObserver.java
+
+Signal在谷歌FCM不可用的时候采用了WebSocket 链接来接收Incoming Msg。 
+但是这个web socket保持链接的前提是需要Signal App在后台没有被强制杀死。 
+但是如果Signal在HMS手机上，如果没有加入电池不优化名单，则一般Signal app在后台10分钟后就无法接收新消息。
+
+
+public IncomingMessageObserver(@NonNull Application context) {
+    if (INSTANCE_COUNT.incrementAndGet() != 1) {
+      throw new AssertionError("Multiple observers!");
+    }
+
+    this.context                    = context;
+    this.networkAccess              = ApplicationDependencies.getSignalServiceNetworkAccess();
+    this.decryptionDrainedListeners = new CopyOnWriteArrayList<>();
+    this.keepAliveTokens            = new HashMap<>();
+
+    new MessageRetrievalThread().start();
+
+    if (!SignalStore.account().isFcmEnabled() || SignalStore.internalValues().isWebsocketModeForced()) {
+      ContextCompat.startForegroundService(context, new Intent(context, ForegroundService.class));
+    }
+...}
